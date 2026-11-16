@@ -67,8 +67,8 @@ class News extends Model implements Administrable
             SlugField::make('code')->label(__('atrium::fields.standard.code'))->from('name')->unique('news', 'code'),
             NumberField::make('sort')->label(__('atrium::fields.standard.sort'))->default(500),
             ImageField::make('preview_picture')->label(__('atrium::fields.standard.preview_picture'))->directory('news'),
-            ContentField::make('preview_text')->label(__('atrium::fields.standard.preview_text')),
-            ContentField::make('detail_text')->label(__('atrium::fields.standard.detail_text')),
+            ContentField::make('preview_text')->label(__('atrium::fields.standard.preview_text'))->ai('preview', from: 'detail_text'),
+            ContentField::make('detail_text')->label(__('atrium::fields.standard.detail_text'))->ai(),
         ];
     }
 
