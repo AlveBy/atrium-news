@@ -1,0 +1,63 @@
+{
+    "name": "alveby/atrium-news",
+    "description": "News for Atrium: translated news of every site, each language at its own address",
+    "type": "atrium-module",
+    "license": "MIT",
+    "homepage": "https://github.com/AlveBy/atrium",
+    "support": {
+        "issues": "https://github.com/AlveBy/atrium/issues",
+        "source": "https://github.com/AlveBy/atrium"
+    },
+    "keywords": [
+        "laravel",
+        "admin",
+        "cms",
+        "news",
+        "multisite",
+        "i18n"
+    ],
+    "require": {
+        "php": "^8.3",
+        "illuminate/support": "^13.0",
+        "alveby/atrium": "^0.1"
+    },
+    "require-dev": {
+        "alveby/atrium-theme": "^0.1",
+        "orchestra/testbench": "^11.0",
+        "phpunit/phpunit": "^12.5"
+    },
+    "autoload": {
+        "psr-4": {
+            "Atrium\\News\\": "src/"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "Atrium\\News\\Tests\\": "tests/"
+        }
+    },
+    "extra": {
+        "atrium": {
+            "resources": [
+                "Atrium\\News\\Models\\News"
+            ],
+            "public_urls": {
+                "Atrium\\News\\Models\\News": {
+                    "prefix": "news"
+                }
+            },
+            "migrations": "database/migrations",
+            "demo": "Atrium\\News\\Database\\NewsDemoSeeder"
+        },
+        "laravel": {
+            "providers": [
+                "Atrium\\News\\NewsServiceProvider"
+            ]
+        },
+        "branch-alias": {
+            "dev-main": "0.1.x-dev"
+        }
+    },
+    "minimum-stability": "dev",
+    "prefer-stable": true
+}
