@@ -119,7 +119,7 @@ final class NewsModelTest extends TestCase
         $this->assertSame(['de', 'en'], $outlet->languages);
         $this->assertSame('de', $outlet->default_language);
         $this->assertTrue($outlet->active);
-        $this->assertSame((int) $default->sort + 10, $outlet->sort);
+        $this->assertSame($default->sort + 10, $outlet->sort);
         $this->assertSame($outlet->id, News::query()->orderByDesc('id')->firstOrFail()->site_id);
         $this->assertSame($default->id, News::query()->orderBy('id')->firstOrFail()->site_id);
     }
@@ -143,6 +143,20 @@ final class NewsModelTest extends TestCase
         (new NewsDemoSeeder)->run();
 
         $this->assertSame(['outlet.localhost'], Site::query()->where('code', 'outlet')->sole()->domains);
+    }
+
+    public function test_the_sites_of_the_application_know_the_outlet_at_once(): void
+    {
+        $this->assertNull(app(Sites::class)->findByCode('outlet'));
+
+        (new NewsDemoSeeder)->run();
+
+        $this->assertSame('Atrium Outlet', app(Sites::class)->findByCode('outlet')?->name);
+    }
+
+    public function test_the_module_is_called_by_its_own_translation(): void
+    {
+        $this->assertSame('News', News::getAdminLabel());
     }
 
     public function test_the_texts_can_be_published(): void
