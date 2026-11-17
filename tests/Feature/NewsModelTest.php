@@ -77,8 +77,14 @@ final class NewsModelTest extends TestCase
         $this->assertSame([500, 500, 500, 500], $news->pluck('sort')->all());
         $this->assertSame(['demo/store.svg', 'demo/sale.svg', 'demo/guide.svg', 'demo/outlet.svg'], $news->pluck('preview_picture')->all());
         $this->assertSame(
-            [['en', 'de', 'ru'], ['en', 'de', 'ru'], ['en'], ['de', 'en']],
-            $news->map(fn (News $item): array => array_keys($item->getTranslations('name')))->all(),
+            [['de', 'en', 'ru'], ['de', 'en', 'ru'], ['en'], ['de', 'en']],
+            // MySQL keeps the keys of a JSON column in its own order.
+            $news->map(function (News $item): array {
+                $languages = array_keys($item->getTranslations('name'));
+                sort($languages);
+
+                return $languages;
+            })->all(),
         );
 
         foreach (['store', 'sale', 'guide', 'outlet'] as $picture) {
