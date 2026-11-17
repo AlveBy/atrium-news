@@ -87,7 +87,7 @@ final class NewsDemoSeeder extends DemoSeeder
         $host = (string) parse_url((string) config('app.url'), PHP_URL_HOST);
         $host = $host === '' || filter_var($host, FILTER_VALIDATE_IP) ? 'localhost' : $host;
 
-        $outlet = Site::query()->firstOrCreate(['code' => 'outlet'], [
+        return Site::query()->firstOrCreate(['code' => 'outlet'], [
             'name' => 'Atrium Outlet',
             'domains' => ['outlet.'.$host],
             'languages' => ['de', 'en'],
@@ -95,9 +95,5 @@ final class NewsDemoSeeder extends DemoSeeder
             'active' => true,
             'sort' => $default->sort + 10,
         ]);
-
-        app(Sites::class)->flush();
-
-        return $outlet;
     }
 }

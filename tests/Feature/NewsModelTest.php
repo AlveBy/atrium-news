@@ -147,11 +147,11 @@ final class NewsModelTest extends TestCase
 
     public function test_the_sites_of_the_application_know_the_outlet_at_once(): void
     {
-        $this->assertNull(app(Sites::class)->findByCode('outlet'));
+        $this->assertSame(['main'], app(Sites::class)->all()->pluck('code')->all());
 
         (new NewsDemoSeeder)->run();
 
-        $this->assertSame('Atrium Outlet', app(Sites::class)->findByCode('outlet')?->name);
+        $this->assertSame(['main', 'outlet'], app(Sites::class)->all()->pluck('code')->all());
     }
 
     public function test_the_module_is_called_by_its_own_translation(): void
