@@ -9,10 +9,12 @@ declare(strict_types=1);
 
 namespace Atrium\News\Models;
 
+use Atrium\Admin\Cache\CachesRecords;
 use Atrium\Admin\Columns\BooleanColumn;
 use Atrium\Admin\Columns\DateColumn;
 use Atrium\Admin\Columns\TextColumn;
 use Atrium\Admin\Contracts\Administrable;
+use Atrium\Admin\Contracts\Cacheable;
 use Atrium\Admin\Fields\CheckboxField;
 use Atrium\Admin\Fields\ContentField;
 use Atrium\Admin\Fields\DateTimeField;
@@ -32,9 +34,9 @@ use Illuminate\Database\Eloquent\Model;
  * @property int $id
  * @property int|null $site_id
  */
-class News extends Model implements Administrable
+class News extends Model implements Administrable, Cacheable
 {
-    use BelongsToSite, InteractsWithAdmin, Translatable;
+    use BelongsToSite, CachesRecords, InteractsWithAdmin, Translatable;
 
     protected $table = 'news';
 
