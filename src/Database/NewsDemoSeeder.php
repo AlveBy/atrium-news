@@ -93,7 +93,7 @@ final class NewsDemoSeeder extends DemoSeeder
             'languages' => ['de', 'en'],
             'default_language' => 'de',
             'active' => true,
-            'sort' => (int) $default->sort + 10,
+            'sort' => $default->sort + 10,
         ]);
 
         app(Sites::class)->flush();
