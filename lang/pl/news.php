@@ -9,4 +9,12 @@ declare(strict_types=1);
 
 return [
     'module' => 'Aktualności',
+    'settings' => [
+        'rss_items' => 'Aktualności w kanale RSS',
+        'rss_items_hint' => 'Ile ostatnich aktualności wyświetla kanał RSS tej witryny.',
+    ],
+    'feed' => [
+        'title' => ':site: aktualności',
+        'description' => 'Najnowsze aktualności serwisu :site',
+    ],
 ];

@@ -10,7 +10,9 @@ declare(strict_types=1);
 namespace Atrium\News\Tests\Feature;
 
 use Atrium\Admin\Resources\ResourceRegistry;
+use Atrium\News\Models\News;
 use Atrium\News\Tests\TestCase;
+use Illuminate\Support\Facades\Route;
 use Illuminate\Support\Facades\Schema;
 
 /**
@@ -24,11 +26,15 @@ final class NotInstalledTest extends TestCase
         parent::defineEnvironment($app);
 
         $app['config']->set('atrium.modules', []);
+        // An address rule is there (the app's own), the module is not.
+        $app['config']->set('atrium.public_urls', [News::class => ['prefix' => 'news']]);
     }
 
     public function test_a_module_required_but_not_installed_is_nowhere(): void
     {
         $this->assertArrayNotHasKey('news', $this->app->make(ResourceRegistry::class)->all());
         $this->assertFalse(Schema::hasTable('news'));
+        $this->assertFalse(Route::has('atrium.news.feed'));
+        $this->get('/news.xml')->assertNotFound();
     }
 }

@@ -47,7 +47,8 @@
                 }
             },
             "migrations": "database/migrations",
-            "demo": "Atrium\\News\\Database\\NewsDemoSeeder"
+            "demo": "Atrium\\News\\Database\\NewsDemoSeeder",
+            "settings": "Atrium\\News\\NewsSettings"
         },
         "laravel": {
             "providers": [

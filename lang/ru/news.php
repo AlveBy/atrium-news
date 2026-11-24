@@ -9,4 +9,12 @@ declare(strict_types=1);
 
 return [
     'module' => 'Новости',
+    'settings' => [
+        'rss_items' => 'Новостей в RSS-ленте',
+        'rss_items_hint' => 'Сколько последних новостей показывает RSS-лента этого сайта.',
+    ],
+    'feed' => [
+        'title' => ':site: новости',
+        'description' => 'Последние новости сайта :site',
+    ],
 ];

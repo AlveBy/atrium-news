@@ -9,4 +9,12 @@ declare(strict_types=1);
 
 return [
     'module' => 'Новини',
+    'settings' => [
+        'rss_items' => 'Новин у RSS-стрічці',
+        'rss_items_hint' => 'Скільки останніх новин показує RSS-стрічка цього сайту.',
+    ],
+    'feed' => [
+        'title' => ':site: новини',
+        'description' => 'Останні новини сайту :site',
+    ],
 ];

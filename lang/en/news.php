@@ -12,4 +12,12 @@ declare(strict_types=1);
  */
 return [
     'module' => 'News',
+    'settings' => [
+        'rss_items' => 'News in the RSS feed',
+        'rss_items_hint' => 'How many of the latest news the RSS feed of this site lists.',
+    ],
+    'feed' => [
+        'title' => ':site: news',
+        'description' => 'The latest news of :site',
+    ],
 ];

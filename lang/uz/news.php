@@ -9,4 +9,12 @@ declare(strict_types=1);
 
 return [
     'module' => 'Yangiliklar',
+    'settings' => [
+        'rss_items' => 'RSS lentadagi yangiliklar',
+        'rss_items_hint' => 'Ushbu saytning RSS lentasi nechta so‘nggi yangilikni ko‘rsatadi.',
+    ],
+    'feed' => [
+        'title' => ':site: yangiliklar',
+        'description' => ':site saytining so‘nggi yangiliklari',
+    ],
 ];

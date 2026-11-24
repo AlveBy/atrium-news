@@ -9,4 +9,12 @@ declare(strict_types=1);
 
 return [
     'module' => 'Notícias',
+    'settings' => [
+        'rss_items' => 'Notícias no feed RSS',
+        'rss_items_hint' => 'Quantas das últimas notícias o feed RSS deste site lista.',
+    ],
+    'feed' => [
+        'title' => ':site: notícias',
+        'description' => 'As últimas notícias de :site',
+    ],
 ];

@@ -9,4 +9,12 @@ declare(strict_types=1);
 
 return [
     'module' => 'ニュース',
+    'settings' => [
+        'rss_items' => 'RSSフィードのニュース件数',
+        'rss_items_hint' => 'このサイトのRSSフィードに載せる最新ニュースの件数です。',
+    ],
+    'feed' => [
+        'title' => ':site：ニュース',
+        'description' => ':site の最新ニュース',
+    ],
 ];

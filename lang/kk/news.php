@@ -9,4 +9,12 @@ declare(strict_types=1);
 
 return [
     'module' => 'Жаңалықтар',
+    'settings' => [
+        'rss_items' => 'RSS арнасындағы жаңалықтар',
+        'rss_items_hint' => 'Осы сайттың RSS арнасы соңғы жаңалықтардың нешеуін көрсетеді.',
+    ],
+    'feed' => [
+        'title' => ':site: жаңалықтар',
+        'description' => ':site сайтының соңғы жаңалықтары',
+    ],
 ];
