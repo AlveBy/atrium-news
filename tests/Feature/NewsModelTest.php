@@ -34,6 +34,17 @@ final class NewsModelTest extends TestCase
         parent::tearDown();
     }
 
+    public function test_the_news_are_offered_as_a_calendar_by_the_date_they_go_live(): void
+    {
+        $views = News::getAdministrationViews();
+
+        $this->assertCount(1, $views);
+        $this->assertSame('calendar', $views[0]->type());
+        $this->assertSame('active_from', $views[0]->getField());
+        $this->assertSame('name', $views[0]->getTitleField());
+        $this->assertNull($views[0]->getUntil());
+    }
+
     public function test_a_news_item_is_active_and_sorted_by_default_and_read_back_as_such(): void
     {
         $news = News::query()->create(['name' => 'Hello', 'code' => 'hello']);

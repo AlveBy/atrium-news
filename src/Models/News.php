@@ -25,6 +25,7 @@ use Atrium\Admin\Fields\TextField;
 use Atrium\Admin\Traits\BelongsToSite;
 use Atrium\Admin\Traits\InteractsWithAdmin;
 use Atrium\Admin\Traits\Translatable;
+use Atrium\Admin\Views\CalendarView;
 use Illuminate\Database\Eloquent\Model;
 
 /**
@@ -87,5 +88,10 @@ class News extends Model implements Administrable, Cacheable
             DateColumn::make('active_from')->label(__('atrium::fields.standard.active_from'))->sortable(),
             BooleanColumn::make('active')->label(__('atrium::fields.standard.active')),
         ];
+    }
+
+    public static function getAdministrationViews(): array
+    {
+        return [CalendarView::make('active_from')->title('name')];
     }
 }
